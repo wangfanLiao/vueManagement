@@ -1,23 +1,25 @@
 <template>
-  <div class="login-container">
-    <el-form ref="formRef" :model="form" class="login-form">
-      <div class="title-container">
-        <h3 class="title">用户登录</h3>
-      </div>
-      <el-form-item>
-        <el-icon class="is-loading">
-          <Loading />
-        </el-icon>
-        <el-input v-model="form.name" />
-      </el-form-item>
-      <el-form-item>
-        <el-icon class="is-loading">
-          <Loading />
-        </el-icon>
-        <el-input v-model="form.password" />
-      </el-form-item>
-      <el-button type="danger" plain @click="loginVerify">Login</el-button>
-    </el-form>
+  <div id="app">
+    <div class="login-container">
+      <el-form ref="formRef" :model="form" class="login-form">
+        <div class="title-container">
+          <h3 class="title">用户登录</h3>
+        </div>
+        <el-form-item>
+          <el-icon class="is-loading">
+            <Loading />
+          </el-icon>
+          <el-input v-model="form.name" />
+        </el-form-item>
+        <el-form-item>
+          <el-icon class="is-loading">
+            <Loading />
+          </el-icon>
+          <el-input v-model="form.password" />
+        </el-form-item>
+        <el-button type="danger" plain @click="loginVerify">Login</el-button>
+      </el-form>
+    </div>
   </div>
 </template>
 

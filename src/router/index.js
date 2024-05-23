@@ -3,9 +3,13 @@ import Login from '../views/login/index.vue'
 
 const routes = [
   {
-    path: '/#/',
-    redirect: '/login',
-    name: 'login',
+    path: '/',
+    redirect: (to) => {
+      return {
+        path: '/login'
+      }
+    },
+    name: 'homeLogin',
     component: Login
   },
   {
