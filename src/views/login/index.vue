@@ -12,9 +12,10 @@
           <el-input v-model="form.name" />
         </el-form-item>
         <el-form-item>
-          <el-icon class="is-loading">
+          <!-- <el-icon class="is-loading">
             <Loading />
-          </el-icon>
+          </el-icon> -->
+          <svg-icon icon="password"></svg-icon>
           <el-input v-model="form.password" />
         </el-form-item>
         <el-button type="danger" plain @click="loginVerify">Login</el-button>
@@ -28,7 +29,9 @@ import { ref } from 'vue'
 import { Loading } from '@element-plus/icons-vue'
 import { mapState } from 'vuex'
 import store from '@/store/index'
+import user from '@/store/date.js'
 
+console.log(user.user)
 const formRef = ref()
 const form = ref({
   name: 'admin',
