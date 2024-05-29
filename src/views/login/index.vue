@@ -42,11 +42,12 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { Loading, SwitchFilled } from '@element-plus/icons-vue'
+import login from '@/api/login.js'
 
 const formRef = ref(null)
 const form = ref({
-  username: '',
-  password: ''
+  username: 'wly',
+  password: '123456'
 })
 const rules = reactive({
   username: [
@@ -70,7 +71,13 @@ const rules = reactive({
 const handleLogin = () => {
   formRef.value.validate((valid) => {
     if (valid) {
-      alert('submit!')
+      login(form.value)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     } else {
       console.log('error submit!!')
       return false

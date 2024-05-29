@@ -9,15 +9,17 @@ function resolve(dir) {
 const webpack = require('webpack')
 
 module.exports = {
-  configureWebpack:config =>  {
+  configureWebpack: (config) => {
     config.plugins.push(
       AutoImport({
-        resolvers: [ElementPlusResolver()],
-      }))
+        resolvers: [ElementPlusResolver()]
+      })
+    )
     config.plugins.push(
       Components({
-        resolvers: [ElementPlusResolver()],
-      }))
+        resolvers: [ElementPlusResolver()]
+      })
+    )
   },
   chainWebpack(config) {
     // 设置 svg-sprite-loader
@@ -52,9 +54,7 @@ module.exports = {
       .end()
     config
       .plugin('ignore')
-      .use(
-        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn$/)
-      )
+      .use(new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn$/))
     config.module
       .rule('icons')
       .test(/\.svg$/)
@@ -67,4 +67,17 @@ module.exports = {
       })
       .end()
   }
+  // devServer: {
+  //   https: false,
+  //   hot: false,
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://localhost:3000',
+  //       changeOrigin: true,
+  //       pathRewrite: {
+  //         '^/api': ''
+  //       }
+  //     }
+  //   }
+  // }
 }
