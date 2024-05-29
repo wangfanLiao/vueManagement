@@ -14,14 +14,14 @@ service.interceptors.response.use(
       return data
     } else {
       ElMessage.error('Oops, this is a error message.')
-      return Promise.reject(new Error(`登录错误,status:${status}`))
+      return Promise.reject(new Error(`登录错误。status:${status}`))
     }
   },
   (error) => {
     error.response &&
       ElMessage.error(
-        `登录错误,status:${error.response.status},` +
-          'message:' +
+        `登录错误. status: ${error.response.status}, ` +
+          'message :' +
           error.response.data
       )
     return Promise.reject(new Error(error.response.data))
