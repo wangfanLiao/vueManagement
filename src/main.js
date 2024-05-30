@@ -5,6 +5,7 @@ import store from './store'
 import '@/styles/index.scss'
 import SvgIcon from '@/icons'
 import 'element-plus/dist/index.css'
+import '@/router/permission'
 // import '@/mock/mock'
 
 const app = createApp(App)

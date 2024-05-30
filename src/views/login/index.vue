@@ -42,8 +42,10 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { Loading, SwitchFilled } from '@element-plus/icons-vue'
-import login from '@/api/login.js'
+import { useStore } from 'vuex'
+// import login from '@/api/login.js'
 
+const store = useStore()
 const formRef = ref(null)
 const form = ref({
   username: 'wly',
@@ -71,13 +73,14 @@ const rules = reactive({
 const handleLogin = () => {
   formRef.value.validate((valid) => {
     if (valid) {
-      login(form.value)
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      // login(form.value)
+      //   .then((res) => {
+      //     console.log(res)
+      //   })
+      //   .catch((err) => {
+      //     console.log(err)
+      //   })
+      store.dispatch('app/login', form.value)
     } else {
       console.log('error submit!!')
       return false
