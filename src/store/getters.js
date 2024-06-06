@@ -1,3 +1,4 @@
 export default {
-  token: (store) => store.app.token
+  token: (state) => state.app.token,
+  HumburgerIcon: (state) => state.app.humburgerIcon
 }

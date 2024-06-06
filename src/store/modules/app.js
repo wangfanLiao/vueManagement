@@ -1,32 +1,37 @@
 import loginAPI from '@/api/login'
 import router from '@/router'
+import { setTime } from '@/utils/auth'
 export default {
   namespaced: true,
   state: () => ({
-    token: localStorage.getItem('token') || ''
+    token: localStorage.getItem('token') || '',
+    humburgerIcon: true
   }),
   mutations: {
     setToken(state, token) {
       state.token = token
       localStorage.clear()
       localStorage.setItem('token', token)
+    },
+    changeHumberger(state) {
+      state.humburgerIcon = !state.humburgerIcon
     }
   },
   actions: {
     async login({ commit }, userInfo) {
       try {
         const response = await loginAPI(userInfo)
-        console.log(response.token)
-        commit('setToken', response.token)
+        console.log(response.data.token)
+        commit('setToken', response.data.token)
+        setTime()
         router.replace('/')
       } catch (err) {
         console.log(err)
       }
     },
     outLogin({ commit }) {
-      console.log(this.state.token)
       commit('setToken', undefined)
-      console.log(this.state.token)
+      localStorage.clear()
       router.replace('/login')
     }
   }

@@ -1,17 +1,20 @@
 import router from './index'
-import getters from '@/store/getters'
+import store from '@/store'
 
 const whiteList = ['/login']
 router.beforeEach((to, from, next) => {
-  if (getters.token && getters.token !== undefined) {
-    console.log(getters.token)
-    console.log('you token')
+  if (store.getters.token && store.getters.token !== 'undefined') {
+    console.log(store.getters.token)
+    console.log(store.getters.token === 'undefined')
+    console.log(to.path)
     if (to.path === '/login') {
+      console.log('tologin!')
       next('/')
     } else {
       next()
     }
   } else {
+    console.log('no token')
     if (whiteList.includes(to.path)) {
       next()
     } else {

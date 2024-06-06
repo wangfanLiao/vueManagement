@@ -20,6 +20,11 @@ module.exports = {
         resolvers: [ElementPlusResolver()]
       })
     )
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(true) // 或者false，取决于你是否需要该特性
+      })
+    )
   },
   chainWebpack(config) {
     // 设置 svg-sprite-loader
@@ -66,18 +71,29 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+  },
+  devServer: {
+    https: false,
+    hot: false,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `
+          @import "@/styles/variables.scss";  // scss文件地址
+          @import "@/styles/mixin.scss";     // scss文件地址
+          @import "@/styles/sidebar.scss"; 
+        `
+      }
+    }
   }
-  // devServer: {
-  //   https: false,
-  //   hot: false,
-  //   proxy: {
-  //     '/api': {
-  //       target: 'http://localhost:3000',
-  //       changeOrigin: true,
-  //       pathRewrite: {
-  //         '^/api': ''
-  //       }
-  //     }
-  //   }
-  // }
 }

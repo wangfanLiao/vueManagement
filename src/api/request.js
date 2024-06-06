@@ -1,5 +1,8 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { authTime } from '@/utils/auth.js'
+// import { useStore } from 'vuex' 只能在setup中使用
+import store from '@/store'
 
 const service = axios.create({
   baseURL: 'http://localhost:3000',
@@ -8,6 +11,16 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config) => {
+    console.log('service.interceptors')
+    if (localStorage.getItem('token')) {
+      console.log('authTime()')
+      console.log(authTime())
+      if (authTime()) {
+        console.log(`store${store}`)
+        store.dispatch('app/outLogin')
+        ElMessage.error('token 失效')
+      }
+    }
     config.headers.Authorization = localStorage.getItem('token')
     return config
   },
@@ -28,13 +41,15 @@ service.interceptors.response.use(
     }
   },
   (error) => {
-    error.response &&
+    if (error.response) {
       ElMessage.error(
         `登录错误. status: ${error.response.status}, ` +
           'message :' +
-          error.response.data
+          error.response.message
       )
-    return Promise.reject(new Error(error.response.data))
+    } else {
+      ElMessage.error('登录错误')
+    }
   }
 )
 
