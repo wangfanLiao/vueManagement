@@ -3,7 +3,8 @@
     <el-form ref="formRef" :model="form" :rules="rules" class="loginForm">
       <div class="title-container">
         <h3 class="title">
-          用户登录<el-icon><component :is="iconName[1]" /></el-icon>
+          {{ $t('login.title')
+          }}<el-icon><component :is="iconName[1]" /></el-icon>
         </h3>
       </div>
       <el-form-item prop="username">
@@ -23,8 +24,12 @@
           ><template #prepend><svg-icon icon="password"></svg-icon></template
         ></el-input>
       </el-form-item>
-      <el-button type="danger" plain @click="handleLogin" class="login-button"
-        >Login</el-button
+      <el-button
+        type="danger"
+        plain
+        @click="handleLogin"
+        class="login-button"
+        >{{ $t('login.btnTitle') }}</el-button
       >
     </el-form>
   </div>

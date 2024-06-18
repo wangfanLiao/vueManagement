@@ -1,11 +1,21 @@
 <template>
   <div class="navbar">
     <Hamburger />
+    <Breadcrumb />
+    <Avatar />
+    <Lang />
+    <ScreenFull />
+    <Driver />
   </div>
 </template>
 
 <script setup>
 import Hamburger from '@/layout/header/component/hamburger.vue'
+import Breadcrumb from '@/layout/header/component/breadcrumb.vue'
+import Avatar from '@/layout/header/component/avatar.vue'
+import Lang from '@/layout/header/component/lang.vue'
+import ScreenFull from '@/layout/header/component/screenfull.vue'
+import Driver from './component/driver/index.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -20,6 +30,12 @@ import Hamburger from '@/layout/header/component/hamburger.vue'
   align-items: center;
   box-sizing: border-box;
   position: relative;
+  > * {
+    margin-right: 15px; //子元素间隔
+  }
+  > *:last-child {
+    margin-right: 0;
+  }
   .navbar-right {
     flex: 1;
     display: flex;

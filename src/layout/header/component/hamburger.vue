@@ -6,11 +6,9 @@
 
 <script setup>
 import { useStore } from 'vuex'
-
 import { computed } from 'vue'
 
 const store = useStore()
-store.commit('app/changeHumberger')
 
 const changeIcon = () => {
   store.commit('app/changeHumberger')
@@ -23,4 +21,8 @@ const icon = computed(() => {
 })
 </script>
 
-<style></style>
+<style>
+.hamburnger-container {
+  cursor: pointer;
+}
+</style>

@@ -5,7 +5,8 @@ export default {
   namespaced: true,
   state: () => ({
     token: localStorage.getItem('token') || '',
-    humburgerIcon: true
+    humburgerIcon: false,
+    lang: localStorage.getItem('lang') || 'en'
   }),
   mutations: {
     setToken(state, token) {
@@ -13,8 +14,16 @@ export default {
       localStorage.clear()
       localStorage.setItem('token', token)
     },
-    changeHumberger(state) {
-      state.humburgerIcon = !state.humburgerIcon
+    changeHumberger(state, bool) {
+      if (bool) {
+        state.humburgerIcon = true
+      } else {
+        state.humburgerIcon = !state.humburgerIcon
+      }
+    },
+    setLang(state, lang) {
+      state.lang = lang
+      localStorage.setItem('lang', lang)
     }
   },
   actions: {

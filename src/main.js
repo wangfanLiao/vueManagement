@@ -6,6 +6,7 @@ import '@/styles/index.scss'
 import SvgIcon from '@/icons'
 import 'element-plus/dist/index.css'
 import '@/router/permission'
+import i18n from '@/i18n/index'
 // import '@/mock/mock'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
@@ -17,3 +18,4 @@ SvgIcon(app)
 app.use(store)
 app.use(router)
 app.mount('#app')
+app.use(i18n)

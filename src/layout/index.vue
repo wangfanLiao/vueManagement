@@ -20,10 +20,13 @@ import Menu from '@/layout/menu/index.vue'
 import Header from '@/layout/header/index.vue'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const i18n = useI18n()
 const store = useStore()
+localStorage.setItem('lang', i18n.locale.value)
 const width = computed(() => {
-  return store.getters.HumburgerIcon ? '$sideBarWidth' : '$hideSideBarWidth'
+  return store.getters.HumburgerIcon ? '67px' : '180px'
 })
 </script>
 

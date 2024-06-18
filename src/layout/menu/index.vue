@@ -16,8 +16,8 @@
       :key="item.id"
     >
       <template #title>
-        <el-icon><component :is="subMenu[index]" /></el-icon>
-        <span>{{ item.authName }}</span>
+        <el-icon><component :is="subMenuIcon[index]" /></el-icon>
+        <span>{{ $t(`menus.${item.path}`) }}</span>
       </template>
       <!-- <router-link
         v-for="child in item.children"
@@ -36,7 +36,7 @@
       >
         <template #title>
           <el-icon><component :is="itemIcon[0]" /></el-icon>
-          <span>{{ child.authName }}</span>
+          <span>{{ $t(`menus.${child.path}`) }}</span>
         </template></el-menu-item
       >
     </el-sub-menu>
@@ -47,7 +47,13 @@
 import menu from '@/api/menu.js'
 import { ref } from 'vue'
 
-const subMenu = ref(['User', 'Unlock', 'Goods', 'ShoppingCartFull', 'PieChart'])
+const subMenuIcon = ref([
+  'User',
+  'Unlock',
+  'Goods',
+  'ShoppingCartFull',
+  'PieChart'
+])
 const itemIcon = ref(['Menu'])
 const defaultActive = ref(sessionStorage.getItem('path') || 'users')
 const menuList = ref()
