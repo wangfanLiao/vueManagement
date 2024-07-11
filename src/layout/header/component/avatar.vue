@@ -13,10 +13,7 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item>Action 1</el-dropdown-item>
-          <el-dropdown-item>Action 2</el-dropdown-item>
-          <el-dropdown-item>Action 3</el-dropdown-item>
-          <el-dropdown-item disabled>Action 4</el-dropdown-item>
+          <el-dropdown-item disabled>Hello {{ user }}</el-dropdown-item>
           <el-dropdown-item divided command="outLogin">{{
             $t('login.outLogin')
           }}</el-dropdown-item>
@@ -29,7 +26,8 @@
 <script setup>
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
-
+import { ref } from 'vue'
+const user = ref(localStorage.getItem('username'))
 const store = useStore()
 const handleCommand = (command) => {
   ElMessage(`click on item ${command}`)

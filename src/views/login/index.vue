@@ -68,7 +68,6 @@ const rules = reactive({
 const handleLogin = () => {
   formRef.value.validate((valid) => {
     if (valid) {
-      console.log(`store${store}`)
       store.dispatch('app/login', form.value)
     } else {
       console.log('error submit!!')

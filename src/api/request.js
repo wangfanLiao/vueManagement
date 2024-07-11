@@ -13,10 +13,7 @@ service.interceptors.request.use(
   (config) => {
     console.log('service.interceptors')
     if (localStorage.getItem('token')) {
-      console.log('authTime()')
-      console.log(authTime())
       if (authTime()) {
-        console.log(`store${store}`)
         store.dispatch('app/outLogin')
         ElMessage.error('token 失效')
       }
@@ -31,7 +28,6 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   (response) => {
-    console.log(response)
     const { data, status } = response
     if (status === 200 || status === 201) {
       return data

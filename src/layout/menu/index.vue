@@ -59,7 +59,6 @@ const defaultActive = ref(sessionStorage.getItem('path') || 'users')
 const menuList = ref()
 const getData = async () => {
   const res = await menu()
-  console.log(`getData.res${res}`)
   menuList.value = res.data
   return res
 }

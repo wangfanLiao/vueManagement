@@ -6,13 +6,18 @@ export default {
   state: () => ({
     token: localStorage.getItem('token') || '',
     humburgerIcon: false,
-    lang: localStorage.getItem('lang') || 'en'
+    lang: localStorage.getItem('lang') || 'en',
+    username: localStorage.getItem('username') || ''
   }),
   mutations: {
     setToken(state, token) {
       state.token = token
       localStorage.clear()
       localStorage.setItem('token', token)
+    },
+    setUsername(state, username) {
+      state.username = username
+      localStorage.setItem('username', username)
     },
     changeHumberger(state, bool) {
       if (bool) {
@@ -30,8 +35,10 @@ export default {
     async login({ commit }, userInfo) {
       try {
         const response = await loginAPI(userInfo)
-        console.log(response.data.token)
         commit('setToken', response.data.token)
+        console.log('userfsgsdgsg')
+        console.log(response.data.username)
+        commit('setUsername', response.data.username)
         setTime()
         router.replace('/')
       } catch (err) {
