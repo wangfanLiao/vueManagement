@@ -1,0 +1,5 @@
+2024/07/12 13:31:27 [emerg] 9564#14092: duplicate location "/" in C:\nginx-1.26.1/conf/nginx.conf:64
+2024/07/12 13:31:42 [emerg] 14908#10052: duplicate location "/" in C:\nginx-1.26.1/conf/nginx.conf:64
+2024/07/12 13:32:02 [emerg] 11092#10724: duplicate location "/" in C:\nginx-1.26.1/conf/nginx.conf:64
+2024/07/12 13:51:11 [notice] 9900#14948: signal process started
+2024/07/12 13:51:14 [notice] 9916#15264: signal process started
