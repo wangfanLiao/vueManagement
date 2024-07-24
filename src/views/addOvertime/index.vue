@@ -32,7 +32,7 @@
   </el-row>
   <el-dialog
     v-model="dialogTableVisible"
-    title="确认修改?"
+    title="确认提交?"
     width="800"
     destroy-on-close
     draggable
