@@ -5,7 +5,7 @@ import { authTime } from '@/utils/auth.js'
 import store from '@/store'
 
 const service = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'http://10.1.140.84:3000',
   timeout: 5000
 })
 
